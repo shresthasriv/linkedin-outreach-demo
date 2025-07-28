@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { authApi } from '../services/api';
 import LoadingSpinner from '../components/LoadingSpinner';
-import { Linkedin, MessageSquare, Zap, Users, ArrowRight, CheckCircle, Sparkles, Target, Shield } from 'lucide-react';
+import { Linkedin, Zap, Users, ArrowRight, CheckCircle, Sparkles, Target, Shield } from 'lucide-react';
 
 const Home: React.FC = () => {
   const [loading, setLoading] = useState(false);
@@ -53,12 +53,6 @@ const Home: React.FC = () => {
     }
   ];
 
-  const stats = [
-    { label: 'Response Rate', value: '89%', icon: '📈' },
-    { label: 'Time Saved', value: '5x', icon: '⏱️' },
-    { label: 'Success Rate', value: '94%', icon: '🎯' },
-  ];
-
   return (
     <div className="space-y-20">
       {/* Hero Section */}
@@ -106,32 +100,8 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="slide-up">
-        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          {stats.map((stat, index) => (
-            <div key={index} className="text-center card-interactive group">
-              <div className="text-4xl mb-3">{stat.icon}</div>
-              <div className="text-3xl font-bold gradient-text mb-2 group-hover:scale-110 transition-transform duration-200">
-                {stat.value}
-              </div>
-              <div className="text-gray-600 font-medium">{stat.label}</div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Features Grid */}
       <section className="slide-up">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Why Choose Our Platform?
-          </h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Experience the perfect blend of AI intelligence and professional networking
-          </p>
-        </div>
-        
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {features.map((feature, index) => (
             <div key={index} className="group card-interactive relative overflow-hidden" style={{ animationDelay: `${index * 0.1}s` }}>
