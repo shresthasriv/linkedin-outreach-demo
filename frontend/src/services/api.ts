@@ -6,14 +6,16 @@ import {
   MessageSendResponse
 } from '../types';
 
+const API_BASE_URL = 'https://linkedin-outreach-demo.onrender.com/api';
+
 const api = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   timeout: 10000,
 });
 
 // Separate instance for longer operations like sending messages
 const longRunningApi = axios.create({
-  baseURL: '/api',
+  baseURL: API_BASE_URL,
   timeout: 30000, // 30 seconds for message sending
 });
 
