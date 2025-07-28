@@ -3,7 +3,6 @@ import { AuthProvider } from './context/AuthContext';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Dashboard from './pages/Dashboard';
-import AuthCallback from './pages/AuthCallback';
 import AuthSuccess from './pages/AuthSuccess';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -22,7 +21,6 @@ function App() {
           <div className="section-container py-8">
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/auth/callback" element={<AuthCallback />} />
               <Route path="/auth/success" element={<AuthSuccess />} />
               <Route 
                 path="/auth/error" 

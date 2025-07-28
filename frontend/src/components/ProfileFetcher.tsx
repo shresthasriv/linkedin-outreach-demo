@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { LinkedInProfile } from '../types';
 import { profileApi } from '../services/api';
-import { User, Building, MapPin, Mail, ExternalLink, Briefcase, GraduationCap, Award } from 'lucide-react';
+import { User, MapPin, ExternalLink, Briefcase, GraduationCap, Award } from 'lucide-react';
 import LoadingSpinner from './LoadingSpinner';
 
 interface ProfileFetcherProps {
