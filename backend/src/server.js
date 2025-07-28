@@ -16,10 +16,31 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again later.'
 });
 
+const allowedOrigins = [
+  config.frontend.url,
+  'http://localhost:3000',
+  'https://linkedin-outreach-demo.vercel.app',
+  'https://*.vercel.app'
+];
+
 app.use(helmet());
 app.use(limiter);
 app.use(cors({
-  origin: config.frontend.url,
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    if (origin.includes('vercel.app')) {
+      return callback(null, true);
+    }
+
+    console.log('CORS rejected origin:', origin);
+    const msg = 'The CORS policy for this site does not allow access from the specified Origin.';
+    return callback(new Error(msg), false);
+  },
   credentials: true
 }));
 app.use(express.json());
@@ -47,4 +68,5 @@ app.use('*', (req, res) => {
 
 app.listen(config.port, () => {
   console.log(`Server running on port ${config.port} in ${config.nodeEnv} mode`);
+  console.log(`Allowed origins: ${allowedOrigins.join(', ')}`);
 }); 
